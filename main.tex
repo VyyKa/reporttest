@@ -17,7 +17,11 @@
 % \usepackage{mathptmx}
 % --- new ---
 \usepackage{fontspec}
-\setmainfont{TeX Gyre Termes} % Dùng font có sẵn trong Windows
+\IfFontExistsTF{TeX Gyre Termes}{
+\setmainfont{TeX Gyre Termes} % Preferred font
+}{
+\setmainfont{Latin Modern Roman} % Safe fallback on minimal TeX setups
+}
 
 % --- GÓI HỖ TRỢ BẢNG BIỂU & HÌNH ẢNH ---
 \usepackage{graphicx}       % Chèn ảnh
