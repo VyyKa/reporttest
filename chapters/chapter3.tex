@@ -1,0 +1,316 @@
+% !TeX root = ../main.tex
+\chapter{RISK MANAGEMENT}
+
+\section{The Essentials of Risk Assessment}
+Risk management is a critical component in the development and deployment of cybersecurity systems. In complex environments such as cyber range platforms, which simulate real-world attack and defense scenarios, the system architecture involves multiple interacting components including virtualized infrastructure, traffic monitoring systems, distributed processing pipelines, and artificial intelligence-based analysis engines. Each of these components introduces potential security, operational, and reliability risks that must be carefully assessed.
+
+In the context of this capstone project, the proposed system integrates Large Language Models (LLMs) into a web-based cyber range platform to support automated analysis of security events and web traffic logs. The system captures HTTP requests generated from simulated cyberattack scenarios and processes them through a multi-stage analysis pipeline. The pipeline includes request normalization, rule-based detection, asynchronous task processing, and contextual interpretation using LLMs.
+
+While this architecture provides powerful capabilities for automated security analysis and cybersecurity training, it also introduces potential risks associated with distributed processing systems, infrastructure misconfiguration, and AI-assisted decision making. If these risks are not properly managed, they may lead to system failures, inaccurate analysis results, or exposure of sensitive information.
+
+Therefore, implementing a structured risk management framework is essential to ensure that the cyber range platform remains secure, reliable, and suitable for educational purposes.
+
+The risk management process in this project aims to:
+\begin{itemize}
+    \item Identify potential security threats and vulnerabilities within the system architecture;
+    \item Evaluate the likelihood and potential impact of these risks;
+    \item Prioritize risks based on severity and operational impact;
+    \item Propose mitigation strategies to reduce or eliminate identified risks.
+\end{itemize}
+
+By performing a comprehensive risk assessment, the development team can proactively address system weaknesses before deployment and ensure that the training environment remains safe for experimentation.
+
+\subsection{Purpose and Objectives of Risk Assessment}
+The purpose of risk assessment in this project is to establish a structured framework for identifying, analyzing, and mitigating potential risks that may affect the operation of the LLM-assisted cyber range platform.
+
+Unlike traditional web applications, cyber range environments are designed to simulate real cyberattack scenarios. This means that the platform intentionally processes malicious traffic, attack payloads, and abnormal system behaviors generated during training exercises. As a result, the system must be carefully designed to ensure that simulated attacks remain confined within the training infrastructure and do not affect other components of the platform.
+
+Furthermore, the integration of artificial intelligence into the analysis pipeline introduces additional challenges. While LLMs can provide valuable insights and explanations for security events, they may also produce inaccurate interpretations if the input data is incomplete or ambiguous. Therefore, risk assessment must consider both infrastructure-level risks and AI-related risks.
+
+The objectives of the risk assessment process include:
+
+\begin{itemize}
+    \item \textbf{Identifying Security Threats:} The system processes web traffic logs generated from simulated attacks. These logs may contain malicious payloads such as SQL injection strings, command injection attempts, or cross-site scripting scripts. Improper handling of these payloads could expose vulnerabilities in the log processing system.
+
+    \item \textbf{Evaluating Infrastructure Reliability:} The platform relies on distributed processing using message queues and worker nodes. If the queue becomes overloaded or worker nodes fail, the system may experience delays in processing security logs.
+
+    \item \textbf{Protecting Sensitive Data:} Security logs, training data, and analysis results represent valuable information that must be protected from unauthorized access or tampering.
+
+    \item \textbf{Ensuring Reliability of AI-assisted Analysis:} The LLM component plays an important role in generating explanations and recommendations for security events. Incorrect interpretations or model errors may affect the accuracy of training outcomes.
+\end{itemize}
+
+By addressing these objectives, the risk assessment framework ensures that the system can operate safely while supporting realistic cybersecurity training scenarios.
+
+\subsection{Risk Assessment Process}
+The risk assessment process for this project follows several stages commonly used in cybersecurity risk management frameworks.
+
+These stages include risk identification, risk estimation, risk prioritization, and control implementation.
+
+\subsubsection{Risk Identification}
+The first step in the risk assessment process involves identifying potential risks that may arise within the cyber range platform. This process examines both the system architecture and operational workflows of the platform.
+
+The architecture includes several major components:
+\begin{itemize}
+    \item Virtualized cyber range infrastructure;
+    \item Traffic monitoring and log collection mechanisms;
+    \item Backend API services;
+    \item Distributed task processing systems;
+    \item LLM-based analysis modules;
+    \item Centralized logging and storage systems.
+\end{itemize}
+Each component may introduce potential risks such as misconfiguration, unauthorized access, or system performance issues.
+
+\subsubsection{Risk Estimation}
+After identifying potential risks, the next step is to evaluate the likelihood of each risk and the severity of its potential impact.
+
+Likelihood represents the probability that a risk will occur during system operation, while impact represents the severity of consequences if the risk occurs.
+
+For example:
+\begin{itemize}
+    \item Misconfigured API endpoints may have a relatively high likelihood due to development complexity.
+    \item Failures in external AI services may have medium likelihood depending on network stability.
+    \item Hardware failures may have low likelihood but high impact if they occur.
+\end{itemize}
+Estimating both likelihood and impact allows the development team to better understand the relative severity of each risk.
+
+\subsubsection{Risk Prioritization}
+Once risks have been estimated, they are categorized based on their severity.
+
+Three main risk levels are used in this project:
+
+\begin{itemize}
+    \item \textbf{High Risk:} High risk issues have both high likelihood and high impact. These risks must be addressed immediately before system deployment.
+    \item \textbf{Medium Risk:} Medium risk issues have moderate likelihood or moderate impact. These risks should be monitored and mitigated progressively.
+    \item \textbf{Low Risk:} Low risk issues have minimal impact and can be addressed later as part of system maintenance.
+\end{itemize}
+
+Prioritizing risks in this manner helps ensure that development resources are allocated effectively.
+
+\subsection{System Architecture Overview and Security Considerations}
+The cyber range platform proposed in this project follows a modular architecture designed to support realistic cybersecurity training scenarios. The system integrates infrastructure virtualization, traffic monitoring mechanisms, and AI-assisted analysis services.
+
+The architecture consists of several layers including:
+\begin{itemize}
+    \item User interaction layer;
+    \item Application backend layer;
+    \item Distributed task processing layer;
+    \item Infrastructure orchestration layer;
+    \item Virtualized training environment layer.
+\end{itemize}
+Each layer plays a specific role in enabling the cyber range platform to capture, process, and analyze simulated attack traffic.
+
+Because the system processes potentially malicious inputs generated during training exercises, it must be designed with strong security controls and isolation mechanisms.
+
+\subsubsection{Cyber Range Infrastructure Layer}
+The cyber range infrastructure layer provides the foundation for the training platform. It consists of virtual machines and containers that simulate real-world IT environments.
+
+The infrastructure is managed using a virtualization platform such as Proxmox, which enables dynamic provisioning of training environments.
+
+Each training environment is organized into an isolated \textbf{user stack}, which typically includes:
+\begin{itemize}
+    \item An attacker machine used for launching simulated attacks;
+    \item A vulnerable target system;
+    \item Monitoring and analysis components.
+\end{itemize}
+This isolation ensures that activities performed by one trainee do not affect other users.
+
+However, the use of virtualization introduces potential risks such as resource exhaustion, network misconfiguration, and unauthorized access between virtual machines.
+
+\subsubsection{Traffic Monitoring Layer}
+The system captures web traffic generated during training exercises using a reverse proxy traffic mirroring mechanism.
+
+The reverse proxy intercepts HTTP requests before forwarding them to target web applications. At the same time, it records request metadata such as:
+\begin{itemize}
+    \item HTTP method;
+    \item Request URL;
+    \item Headers;
+    \item Payload data.
+\end{itemize}
+These logs are then forwarded to the centralized analysis pipeline.
+
+Because the reverse proxy processes raw user input, improper handling of HTTP payloads may introduce vulnerabilities such as injection attacks targeting the log processing system.
+
+\subsubsection{Application Backend and AI Analysis Layer}
+The application backend coordinates communication between different system components.
+
+The backend is implemented as a RESTful API using Flask and serves as the central control component for the platform.
+
+Its responsibilities include:
+\begin{itemize}
+    \item Managing training environments;
+    \item Retrieving analysis results;
+    \item Initiating analysis tasks;
+    \item Communicating with the dashboard interface.
+\end{itemize}
+The backend interacts with the LLM analysis service to interpret security logs and generate contextual explanations for detected attack patterns.
+
+The LLM can identify patterns such as SQL injection attempts, directory traversal attacks, and authentication bypass attempts.
+
+However, the integration of AI models introduces additional risks such as inaccurate model interpretations and dependency on external AI services.
+
+\subsubsection{Distributed Task Processing Layer}
+To handle large volumes of log data, the platform uses a distributed task processing architecture.
+
+The system uses RabbitMQ as the message broker and Celery as the distributed task queue.
+
+This architecture allows log analysis tasks to be processed asynchronously by multiple worker nodes.
+
+While this design improves scalability and system responsiveness, it also introduces risks such as queue congestion, task execution failures, and synchronization issues.
+
+\subsubsection{Data Storage and Logging Layer}
+The platform stores analysis results and system metadata in a PostgreSQL database.
+
+Redis is used as a high-speed caching layer and for real-time log streaming.
+
+Protecting the integrity and confidentiality of stored data is essential because these logs may contain sensitive information related to training activities.
+
+Potential risks include unauthorized database access, data tampering, and loss of log integrity.
+
+\section{Identification of Critical Assets}
+Identifying critical assets is an essential step in the risk management process. Critical assets represent system components that are essential for the operation of the cyber range platform.
+
+These assets include infrastructure components, software services, data assets, and network resources.
+
+In this project, an asset is considered \textbf{critical} when its compromise can significantly affect one or more core security properties: confidentiality, integrity, availability, and operational continuity.
+
+The identification process also considers dependency relationships between assets. For example, a failure in message queue services may indirectly affect AI analysis, dashboard visibility, and incident response time.
+
+Therefore, critical asset identification is not limited to standalone components but also includes cross-layer dependencies that support end-to-end analysis workflows.
+
+\subsubsection{Infrastructure Assets}
+Infrastructure assets include:
+\begin{itemize}
+    \item Virtualization servers hosting cyber range environments;
+    \item Backend application servers;
+    \item Worker nodes processing analysis tasks;
+    \item Database servers storing logs and results.
+\end{itemize}
+Failure of any of these components could disrupt the training platform.
+
+Among these assets, virtualization hosts and database servers are prioritized because they directly affect both service availability and evidence persistence for training activities.
+
+\subsubsection{Software Assets}
+Key software components include:
+\begin{itemize}
+    \item Backend API services;
+    \item Request processing modules;
+    \item Distributed task queue services;
+    \item LLM integration modules.
+\end{itemize}
+Vulnerabilities in these components may allow attackers to exploit the system.
+
+Because software assets are frequently updated, configuration errors and insecure defaults are considered realistic risk sources and must be continuously reviewed.
+
+\subsubsection{Data Assets}
+Important data assets include:
+\begin{itemize}
+    \item HTTP request logs;
+    \item Security alerts;
+    \item Analysis results;
+    \item Training activity logs.
+\end{itemize}
+Protecting these assets is essential to maintain the integrity of training scenarios.
+
+Data assets are particularly sensitive because even non-production training logs may reveal attack techniques, internal architecture information, and user activity patterns.
+
+\subsubsection{Network Assets}
+Network assets include:
+\begin{itemize}
+    \item API endpoints;
+    \item Internal service communication channels;
+    \item Public IP addresses associated with the platform.
+\end{itemize}
+Improper network configuration could expose these assets to unauthorized access.
+
+To support later risk prioritization, these network assets are evaluated not only by exposure level but also by their role in enabling secure service-to-service communication.
+
+\section{Risk Analysis}
+Risk analysis evaluates the likelihood and impact of the risks identified during the assessment process.
+
+This analysis helps determine which risks require immediate mitigation.
+
+\subsection{Impact Assessment}
+The potential impacts of system risks include:
+
+\begin{itemize}
+    \item \textbf{System Downtime:} Infrastructure failures or message queue overload may prevent the system from processing incoming logs.
+    \item \textbf{Data Exposure:} Unauthorized access to logs or analysis results could expose sensitive training data.
+    \item \textbf{Incorrect Security Analysis:} Errors in AI interpretation may produce inaccurate recommendations.
+    \item \textbf{Performance Degradation:} High traffic volumes may slow down the analysis pipeline.
+\end{itemize}
+
+\subsection{Likelihood Assessment}
+The likelihood assessment results for key identified risks are presented in Table \ref{tab:risk-likelihood-assessment}.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{0.8\textwidth}{|X|c|}
+        \hline
+        \textbf{Risk} & \textbf{Likelihood} \\
+        \hline
+        API misconfiguration & High \\
+        \hline
+        Queue overload & Medium \\
+        \hline
+        Database failure & Low \\
+        \hline
+        AI analysis delay & Medium \\
+        \hline
+        Incomplete log capture & Medium \\
+        \hline
+        Security rule misconfiguration & High \\
+        \hline
+    \end{tabularx}
+    \caption{Likelihood assessment of identified risks}
+    \label{tab:risk-likelihood-assessment}
+\end{table}
+
+\section{Control Identification and Assessment}
+Control mechanisms are implemented to reduce the likelihood and impact of identified risks.
+
+Controls can be categorized into technical and non-technical controls.
+
+\subsection{Technical Management}
+Technical controls include:
+\begin{itemize}
+    \item Role-based access control for system users;
+    \item Secure API authentication mechanisms;
+    \item Encrypted network communication using HTTPS;
+    \item System monitoring and logging mechanisms;
+    \item Queue management and worker scaling strategies.
+\end{itemize}
+These measures help prevent unauthorized access and system failures.
+
+\subsection{Non-Technical Management}
+Non-technical controls include:
+\begin{itemize}
+    \item Security awareness training for developers;
+    \item Documentation of system configuration procedures;
+    \item Incident response planning;
+    \item Regular security audits.
+\end{itemize}
+These controls help ensure that the system is managed responsibly.
+
+\subsection{Server Setup for the Cyber Range Platform}
+In this project, system deployment is designed as a one-click automated workflow. Therefore, daily operation does not require repeated manual installation steps. Instead, this subsection documents the Proxmox base setup process used to prepare the infrastructure before automation is executed.
+
+The setup flow is summarized as follows:
+\begin{itemize}
+    \item Prepare the Proxmox host with network bridge configuration and storage allocation;
+    \item Validate one-click deployment by testing service availability, connectivity, and isolation.
+\end{itemize}
+
+Because deployment is automated, risk control focuses on template integrity, script reliability, and rollback capability rather than manual installation repeatability.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.86\textwidth]{\detokenize{images/figure 3-1.png}}
+    \caption{Proxmox host preparation for cyber range deployment}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.86\textwidth]{\detokenize{images/figure 3-2.jpg}}
+    \caption{Automated one-click environment provisioning workflow}
+\end{figure}
