@@ -18,3 +18,12 @@
 !*.yaml
 !*.yml
 !*.json
+!*.png
+!*.jpg
+!*.jpeg
+!*.pdf
+!*.eps
+
+# Ignore compiled output
+main.pdf
+Result/main.pdf
