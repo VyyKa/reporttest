@@ -18,9 +18,3 @@
 !*.yaml
 !*.yml
 !*.json
-!*.png
-!*.jpg
-!*.jpeg
-!*.pdf
-!*.eps
-!*.svg

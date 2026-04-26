@@ -1,0 +1,138 @@
+{
+  "precision": 0.9875444839857651,
+  "recall": 0.9996725069592272,
+  "f1_score": 0.9935714866954186,
+  "roc_auc": 0.9999465350316602,
+  "average_inference_time_ms": 0.12411609999253415,
+  "threshold": 0.35,
+  "classification_report": {
+    "0": {
+      "precision": 0.9996684350132626,
+      "recall": 0.9873915179302439,
+      "f1-score": 0.9934920504160145,
+      "support": 6107.0
+    },
+    "1": {
+      "precision": 0.9875444839857651,
+      "recall": 0.9996725069592272,
+      "f1-score": 0.9935714866954186,
+      "support": 6107.0
+    },
+    "accuracy": 0.9935320124447355,
+    "macro avg": {
+      "precision": 0.9936064594995139,
+      "recall": 0.9935320124447355,
+      "f1-score": 0.9935317685557166,
+      "support": 12214.0
+    },
+    "weighted avg": {
+      "precision": 0.993606459499514,
+      "recall": 0.9935320124447355,
+      "f1-score": 0.9935317685557167,
+      "support": 12214.0
+    }
+  },
+  "top_features": [
+    {
+      "feature_name": "special_char_ratio",
+      "importance": 0.03921678090763405,
+      "feature_group": "custom_stats"
+    },
+    {
+      "feature_name": "non_alnum_ratio",
+      "importance": 0.029895538991828344,
+      "feature_group": "custom_stats"
+    },
+    {
+      "feature_name": "percent_encoded_count",
+      "importance": 0.029208728221218613,
+      "feature_group": "custom_stats"
+    },
+    {
+      "feature_name": "etc",
+      "importance": 0.014297617350651853,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": ": ",
+      "importance": 0.012396391674840414,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "tc",
+      "importance": 0.012275127862863727,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "digit_ratio",
+      "importance": 0.00889061817385085,
+      "feature_group": "custom_stats"
+    },
+    {
+      "feature_name": "et",
+      "importance": 0.008653628869752,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "tc%",
+      "importance": 0.007751851865842585,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "..",
+      "importance": 0.006479465287769259,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "ea",
+      "importance": 0.005964912137611104,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "e%",
+      "importance": 0.00590753943661425,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "ot",
+      "importance": 0.0058523151489813675,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "-4",
+      "importance": 0.00573579339194768,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "ot.",
+      "importance": 0.00568504054420187,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "etc%",
+      "importance": 0.0054602810348584494,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "s/",
+      "importance": 0.005307188659769241,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "%c0",
+      "importance": 0.005283847313986822,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "se",
+      "importance": 0.005216528917258417,
+      "feature_group": "tfidf_char"
+    },
+    {
+      "feature_name": "length",
+      "importance": 0.00515402058517296,
+      "feature_group": "custom_stats"
+    }
+  ],
+  "explainability_summary": "Top 20 features contain 5 custom stats feature(s) and 15 TF-IDF feature(s).\nCustom feature summary: special_char_ratio (0.0392), non_alnum_ratio (0.0299), percent_encoded_count (0.0292), digit_ratio (0.0089), length (0.0052)"
+}

@@ -293,6 +293,34 @@ In the final step, the learner executes the dump command and obtains table data 
 Taken together, these ten steps validate a complete Red Team workflow: the learner accesses the Cyber Shell Assistant, connects the terminal, confirms session synchronization, probes the target, receives AI guidance, and executes offensive commands that enumerate and dump database content from the vulnerable web application. This evidence is especially valuable because it shows that the AI component supports hands-on offensive learning through contextual guidance rather than by replacing user action.
 
 
+\subsection{Gatekeeper Model Validation}
+In addition to the end-to-end RAG benchmark, the project also evaluated the \textit{gatekeeper} classifier used as the first screening stage in the payload-analysis pipeline. The role of this model is to quickly distinguish suspicious payload candidates from normal inputs before the more expensive retrieval and generation stages are invoked. This makes the full pipeline more selective and reduces unnecessary LLM usage on clearly benign requests.
+
+The evaluated classifier is a Random Forest model trained on a balanced dataset composed of scraped malicious payloads and synthetic benign strings. Malicious inputs were collected from PayloadsAllTheThings, while benign samples were generated from Faker-driven templates and ordinary web-traffic patterns. The dataset was deduplicated, length-filtered, and split using an 80/20 stratified partition. At inference time, the classifier uses a threshold of 0.35 so that recall is prioritized over strict conservatism, which is appropriate for a pre-filter whose outputs are later re-checked by deeper reasoning stages.
+
+The evaluation report shows strong binary classification quality, with precision of 0.9875, recall of 0.9997, F1-score of 0.9936, and ROC AUC of 0.9999. The report also records a low average inference cost of approximately 0.124 ms per sample in a 1000-sample batch, which is suitable for front-line filtering in a web-security pipeline.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.72\textwidth]{Result/Gatekeeper/confusion_matrix.png}
+    \caption{Normalized confusion matrix of the Gatekeeper model.}
+    \label{fig:gatekeeper-confusion-matrix}
+\end{figure}
+
+The normalized confusion matrix confirms that the model preserves almost perfect recall for suspicious inputs while maintaining a low false-positive rate on normal traffic. This is desirable in the current project because missed malicious payloads would weaken later retrieval and explanation quality more severely than a small number of additional suspicious candidates.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{Result/Gatekeeper/feature_importance.png}
+    \caption{Top feature importances used by the Gatekeeper model.}
+    \label{fig:gatekeeper-feature-importance}
+\end{figure}
+
+The feature-importance chart further shows that the model relies heavily on interpretable lexical indicators such as \texttt{special\_char\_ratio}, \texttt{non\_alnum\_ratio}, and \texttt{percent\_encoded\_count}, together with selected TF-IDF features. This supports the design choice of using the gatekeeper as a transparent and fast pre-filter before passing only higher-risk payloads to the RAG-based reasoning stage.
+
+From a validity perspective, the main limitation of the gatekeeper benchmark is that the benign class is partially synthetic. Although this improves class balance and supports controlled experimentation, synthetic benign traffic may not fully capture unusual but legitimate production requests. As a result, the reported false-positive behavior may still underestimate edge cases that would appear in larger real-world deployments. In addition, the model is trained primarily on known malicious patterns, so its generalization to heavily obfuscated or novel payload styles remains a practical limitation. For that reason, the gatekeeper is best interpreted as a high-recall screening component rather than as the final security judge.
+
+
 \subsection{RAG and No-RAG Benchmark Comparison}
 A controlled benchmark was conducted to compare RAG and No-RAG on the same 800-request dataset. The comparison focuses on detection, attack intelligence, and grounded reasoning.
 

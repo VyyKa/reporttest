@@ -1,0 +1,21 @@
+Gatekeeper ML Evaluation Report
+===============================
+
+Precision: 0.9875
+Recall: 0.9997
+F1-Score: 0.9936
+ROC AUC: 0.9999
+Average Inference Time (1000-sample batch): 0.124116 ms/sample
+Threshold: 0.35
+
+Per-Class Classification Report
+-------------------------------
+                precision    recall  f1-score   support
+
+    Normal (0)       1.00      0.99      0.99      6107
+Suspicious (1)       0.99      1.00      0.99      6107
+
+      accuracy                           0.99     12214
+     macro avg       0.99      0.99      0.99     12214
+  weighted avg       0.99      0.99      0.99     12214
+
