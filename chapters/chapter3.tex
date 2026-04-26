@@ -18,7 +18,7 @@ The risk management process in this project aims to:
     \item Propose mitigation strategies to reduce or eliminate identified risks.
 \end{itemize}
 
-By performing a comprehensive risk assessment, the development team can proactively address system weaknesses before deployment and ensure that the training environment remains safe for experimentation.
+A comprehensive risk assessment helps the development team address system weaknesses before deployment and keep the training environment safe for experimentation.
 
 \subsection{Purpose and Objectives of Risk Assessment}
 The purpose of risk assessment in this project is to establish a structured framework for identifying, analyzing, and mitigating potential risks that may affect the operation of the LLM-assisted cyber range platform.
@@ -133,7 +133,7 @@ Because the reverse proxy processes raw user input, improper handling of HTTP pa
 \subsubsection{Application Backend and AI Analysis Layer}
 The application backend coordinates communication between different system components.
 
-The backend is implemented as a RESTful API using Flask and serves as the central control component for the platform.
+The backend is implemented as a RESTful API using FastAPI and serves as the central control component for the platform.
 
 Its responsibilities include:
 \begin{itemize}
@@ -144,7 +144,7 @@ Its responsibilities include:
 \end{itemize}
 The backend interacts with the LLM analysis service to interpret security logs and generate contextual explanations for detected attack patterns.
 
-The LLM can identify patterns such as SQL injection attempts, directory traversal attacks, and authentication bypass attempts.
+The AI analysis layer helps interpret patterns such as SQL injection attempts, directory traversal attacks, and authentication bypass attempts.
 
 However, the integration of AI models introduces additional risks such as inaccurate model interpretations and dependency on external AI services.
 
@@ -305,12 +305,12 @@ Because deployment is automated, risk control focuses on template integrity, scr
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.86\textwidth]{\detokenize{images/figure 3-1.png}}
+    \includegraphics[width=0.95\textwidth]{\detokenize{images/figure 3-1.png}}
     \caption{Proxmox host preparation for cyber range deployment}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.86\textwidth]{\detokenize{images/figure 3-2.jpg}}
+    \includegraphics[width=0.95\textwidth]{images/rendered/figure 3-2.png}
     \caption{Automated one-click environment provisioning workflow}
 \end{figure}

@@ -8,50 +8,51 @@
 \usepackage{amsthm}
 \usepackage[hidelinks]{hyperref}
 \renewcommand{\UrlFont}{\rmfamily}
-% --- Support Vietnamese ---
-% (XeLaTeX/LuaLaTeX không dùng inputenc)
+% --- Unicode and font support ---
+% XeLaTeX/LuaLaTeX do not require inputenc
 % \usepackage[utf8]{inputenc}
 % \usepackage{vntex}
 % \usepackage{lmodern}
-% mathptmx xung đột với fontspec
+% mathptmx conflicts with fontspec
 % \usepackage{mathptmx}
 % --- new ---
 \usepackage{fontspec}
-\IfFontExistsTF{TeX Gyre Termes}{
-\setmainfont{TeX Gyre Termes} % Preferred font
-}{
-\setmainfont{Latin Modern Roman} % Safe fallback on minimal TeX setups
-}
+\setmainfont{TeX Gyre Termes} % Use a widely available serif font
 
-% --- GÓI HỖ TRỢ BẢNG BIỂU & HÌNH ẢNH ---
-\usepackage{graphicx}       % Chèn ảnh
-\usepackage{float}          % Cố định vị trí ảnh
+% --- Tables and figures ---
+\usepackage{graphicx}       % Insert images
+\usepackage{float}          % Control float placement
 \usepackage{placeins}       % \FloatBarrier to prevent floats crossing sections
-\usepackage{array}          % Căn chỉnh bảng
-\usepackage{longtable}      % Bảng dài qua trang (quan trọng cho Task Sheet)
-\usepackage{caption}        % Chú thích đẹp hơn
+\usepackage{array}          % Table alignment helpers
+\usepackage{longtable}      % Tables spanning multiple pages
+\usepackage{caption}        % Caption formatting
 \captionsetup[table]{position=bottom}
+\captionsetup[longtable]{position=bottom}
 \usepackage{multirow}
 \usepackage{tabularx}
 
-% --- 4. CẤU HÌNH HIỂN THỊ CODE ---
+% --- Code display ---
 \usepackage{listings}
 \usepackage{xcolor}
 
 % --- PARAGRAPH / SPACING ---
-\usepackage{indentfirst} % thụt lề cả đoạn đầu sau tiêu đề
+\usepackage{indentfirst} % Indent the first paragraph after headings
 \setlength{\parindent}{1.2cm}
 \setlength{\parskip}{0pt}
 \usepackage{setspace}
 \onehalfspacing
 \raggedbottom
+\setlength{\emergencystretch}{2em}
+\Urlmuskip=0mu plus 2mu\relax
+\hbadness=10000
+\hfuzz=20pt
 
-% --- THÔNG TIN FILE ---
+% --- Document metadata ---
 \title{INTEGRATING LARGE LANGUAGE MODELS (LLM) INTO WEB-BASED CYBER RANGE}
 \author{Huynh Ngoc Quang et al.}
 
 \begin{document}
-	% 1. PHẦN ĐẦU (Trang bìa, Lời cảm ơn, Mục lục)
+	% Front matter
 	\include{front/titlepage}
 	\include{front/acknowledgement}
 
@@ -59,11 +60,13 @@
 	\listoffigures
 	\listoftables
 
-	% 2. PHẦN NỘI DUNG CHÍNH (Các chương)
-	% Tôi chia nhỏ ra để bạn dễ viết
+	% Main content
+	% Chapters are split into separate files for easier maintenance
 	\include{chapters/chapter1}
 	\include{chapters/chapter2}
 	\include{chapters/chapter3}
 	\include{chapters/chapter4}
-	% \include{chapters/chapter5} % Bỏ comment khi bạn viết chương 5
+	\include{chapters/chapter5}
+	\include{chapters/chapter6}
+	\include{chapters/references}
 \end{document}

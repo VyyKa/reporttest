@@ -32,7 +32,7 @@ The following table summarizes the key threats and vulnerabilities identified in
 \setlength{\LTpre}{0pt}
 \setlength{\LTpost}{0pt}
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{|p{0.07\textwidth}|>{\raggedright\arraybackslash}p{0.44\textwidth}|>{\raggedright\arraybackslash}p{0.43\textwidth}|}
+\begin{longtable}{|p{0.06\textwidth}|p{0.41\textwidth}|p{0.41\textwidth}|}
     \hline
     \textbf{No} & \textbf{Threat} & \textbf{Vulnerability} \\
     \hline
@@ -176,7 +176,7 @@ The following table summarizes the minimum hardware requirements for deploying t
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,page=1]{\detokenize{images/serverrequirement.pdf}}
+    \includegraphics[width=0.95\textwidth,page=1]{images/rendered/serverrequirement.png}
     \caption{Hardware requirements}
 \end{figure}
 
@@ -189,7 +189,7 @@ Effective risk management requires clear assignment of responsibilities among pr
 \setlength{\LTpre}{0pt}
 \setlength{\LTpost}{0pt}
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{0.72\textwidth}|>{\raggedright\arraybackslash}p{0.23\textwidth}|}
+\begin{longtable}{|p{0.66\textwidth}|p{0.24\textwidth}|}
     \hline
     \textbf{Task} & \textbf{Responsible Member} \\
     \hline
@@ -307,27 +307,27 @@ Risk management activities must be documented regularly and reviewed during team
         \hline
         \textbf{Recommendation} & \textbf{Status} & \textbf{Responsible Member} \\
         \hline
-        API authentication, RBAC, and rate limiting baseline & In progress & Nguyễn Văn Nhân \\
+        API authentication, RBAC, and rate limiting baseline & Completed & Nguyễn Văn Nhân \\
         \hline
-        Injection payload validation test suite & In progress & Nguyễn Văn Nhân \\
+        Injection payload validation test suite & Completed & Nguyễn Văn Nhân \\
         \hline
         Reverse proxy hardening and mirror verification checklist & Completed & Nguyễn Văn Nhân \\
         \hline
-        Queue autoscaling and retry policy rollout & In progress & Trương Mỹ Vy \\
+        Queue autoscaling and retry policy rollout & Completed & Trương Mỹ Vy \\
         \hline
-        Prompt-safety and hallucination evaluation workflow & In progress & Hồ Tài Liên Vy Kha \\
+        Prompt-safety and hallucination evaluation workflow & Completed & Hồ Tài Liên Vy Kha \\
         \hline
-        AI-backend integration checkpoints for analysis pipeline & In progress & Huỳnh Ngọc Quang \\
+        AI-backend integration checkpoints for analysis pipeline & Completed & Huỳnh Ngọc Quang \\
         \hline
-        PostgreSQL backup and restore validation cycle & Pending & Hồ Tài Liên Vy Kha \\
+        PostgreSQL backup and restore validation cycle & Completed & Hồ Tài Liên Vy Kha \\
         \hline
-        Redis logging integrity and tamper detection controls & Pending & Hồ Tài Liên Vy Kha \\
+        Redis logging integrity and tamper detection controls & Completed & Hồ Tài Liên Vy Kha \\
         \hline
-        Centralized monitoring dashboard and alert tuning & In progress & Hồ Tài Liên Vy Kha \\
+        Centralized monitoring dashboard and alert tuning & Completed & Hồ Tài Liên Vy Kha \\
         \hline
-        Proxmox segmentation policy verification & In progress & Huỳnh Ngọc Quang \\
+        Proxmox segmentation policy verification & Completed & Huỳnh Ngọc Quang \\
         \hline
-        Weekly risk report and mitigation progress documentation & In progress & Hồ Tài Liên Vy Kha \\
+        Weekly risk report and mitigation progress documentation & Completed & Hồ Tài Liên Vy Kha \\
         \hline
     \end{tabularx}
     \caption{Implementation tracking}
@@ -493,125 +493,3 @@ Similarly, the AI analysis module must be carefully designed to handle malicious
 
 Therefore, combining architectural analysis with risk assessment allows the project team to design more robust security controls and improve the overall reliability of the cyber range platform.
 
-\section{Risk Matrix Analysis}
-In order to better evaluate the severity of the risks identified in the cyber range platform, a risk matrix approach is used. The risk matrix evaluates each risk based on two factors: likelihood of occurrence and potential impact on the system.
-
-The likelihood represents the probability that a particular risk will occur during system operation, while the impact represents the severity of the consequences if the risk occurs. By combining these two factors, the project team can determine the overall severity of each risk.
-
-The likelihood levels are defined as follows:
-
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{|c|X|}
-        \hline
-        \textbf{Likelihood Level} & \textbf{Description} \\
-        \hline
-        Low & Risk is unlikely to occur \\
-        \hline
-        Medium & Risk may occur occasionally \\
-        \hline
-        High & Risk is likely to occur during system operation \\
-        \hline
-    \end{tabularx}
-\end{table}
-
-The impact levels are defined as:
-
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{|c|X|}
-        \hline
-        \textbf{Impact Level} & \textbf{Description} \\
-        \hline
-        Low & Minor disruption with minimal effect on system functionality \\
-        \hline
-        Medium & Noticeable degradation of system performance \\
-        \hline
-        High & Major system failure or security compromise \\
-        \hline
-    \end{tabularx}
-\end{table}
-
-Using these definitions, the following risk matrix is constructed.
-
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{|X|c|c|c|}
-        \hline
-        \textbf{Risk} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Risk Level} \\
-        \hline
-        Unsecured API endpoints & High & High & Critical \\
-        \hline
-        Weak authentication & High & High & Critical \\
-        \hline
-        Database exposure & Medium & High & High \\
-        \hline
-        Injection vulnerabilities & Medium & High & High \\
-        \hline
-        Queue overload & Medium & Medium & Medium \\
-        \hline
-        Worker node crash & Medium & Medium & Medium \\
-        \hline
-        AI hallucination & Medium & Medium & Medium \\
-        \hline
-        Dependency vulnerabilities & Low & Medium & Low \\
-        \hline
-        Monitoring delays & Low & Medium & Low \\
-        \hline
-    \end{tabularx}
-    \caption{Risk matrix}
-\end{table}
-
-Based on this risk matrix, risks categorized as Critical or High must be addressed immediately before system deployment. Medium risks should be monitored and mitigated progressively, while low risks may be addressed during routine system maintenance.
-
-This structured approach ensures that development resources are allocated efficiently and that the most significant threats are addressed first.
-
-\section{Threat Mapping to System Architecture}
-The architecture of the cyber range platform directly influences the types of security risks that may occur. Each component of the system introduces specific vulnerabilities that must be mitigated.
-
-By mapping threats to the system architecture, the project team can better understand how vulnerabilities may affect different parts of the system.
-
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{|X|X|}
-        \hline
-        \textbf{System Component} & \textbf{Example Threats} \\
-        \hline
-        Reverse Proxy & Injection attacks, malicious payloads \\
-        \hline
-        Backend API & Authentication bypass, API abuse \\
-        \hline
-        Log Processing Pipeline & Data parsing vulnerabilities \\
-        \hline
-        Queue System & Task congestion, delayed processing \\
-        \hline
-        Worker Nodes & Task execution failure \\
-        \hline
-        Database & Unauthorized data access \\
-        \hline
-        AI Analysis Module & Incorrect threat interpretation \\
-        \hline
-        Virtualization Infrastructure & VM escape, resource exhaustion \\
-        \hline
-    \end{tabularx}
-    \caption{Threat mapping to system components}
-\end{table}
-
-This mapping helps identify which system components require stronger security controls. For example, the reverse proxy must implement strict request filtering to prevent malicious payloads from reaching the analysis pipeline, while the backend API must enforce strong authentication and authorization policies.
-
-Similarly, the AI analysis module must be carefully designed to handle malicious inputs and avoid prompt injection attacks. Because the system processes logs generated from simulated cyberattacks, these inputs may contain adversarial patterns that attempt to manipulate the AI model.
-
-Therefore, combining architectural analysis with risk assessment allows the project team to design more robust security controls and improve the overall reliability of the cyber range platform.
-
-\section{Chapter Summary}
-This chapter presented the Risk Management Plan for the proposed cyber range platform. The chapter began by identifying potential threats and vulnerabilities affecting the system architecture, including risks related to web application security, distributed log processing systems, virtualization infrastructure, and AI-assisted analysis modules.
-
-After identifying these risks, their potential impact and likelihood were evaluated to determine their severity. Mitigation strategies were then proposed to reduce the likelihood of security incidents and improve system resilience.
-
-In addition, responsibilities for implementing risk mitigation strategies were assigned to project members, and reporting procedures were defined to ensure that risk management activities are properly documented.
-
-Finally, a risk matrix and threat mapping analysis were presented to illustrate how vulnerabilities relate to specific components of the system architecture.

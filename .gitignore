@@ -18,4 +18,9 @@
 !*.yaml
 !*.yml
 !*.json
-!images/**
+!*.png
+!*.jpg
+!*.jpeg
+!*.pdf
+!*.eps
+!*.svg

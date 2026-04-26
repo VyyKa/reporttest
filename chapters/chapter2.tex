@@ -13,7 +13,7 @@ At an abstract level, this project addresses a fundamental limitation in current
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/figure 2-1.png}
+	\includegraphics[width=0.95\textwidth]{images/figure 2-1.png}
 	\caption{Skill Development to Application of Skills}
 \end{figure}
 
@@ -40,7 +40,7 @@ A Large Language Model is integrated as an intelligent SOC assistant within the 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{\detokenize{images/systemflow.pdf}}
+	\includegraphics[width=0.95\textwidth]{images/system_flow.pdf}
 	\caption{Proposed infrastructure architecture of the cyber range platform.}
 	\label{fig:infra-arch}
 \end{figure}
@@ -49,12 +49,12 @@ A Large Language Model is integrated as an intelligent SOC assistant within the 
 \begin{table}[H]
 	\centering
 	\begingroup
-	\setlength{\tabcolsep}{2pt}
+	\setlength{\tabcolsep}{3pt}
 	\renewcommand{\arraystretch}{1.1}
 	\small
-	\begin{tabularx}{\textwidth}{|p{0.7cm}|p{2.9cm}|p{1.0cm}|p{1.0cm}|p{1.2cm}|X|p{1.3cm}|}
+	\begin{tabularx}{\textwidth}{|p{0.65cm}|p{2.8cm}|p{0.95cm}|p{0.95cm}|p{1.1cm}|X|p{1.45cm}|}
 		\hline
-		\textbf{No.} & \textbf{OS} & \textbf{CPU} & \textbf{RAM} & \textbf{Storage} & \textbf{Purpose} & \textbf{Quantity} \\
+		\textbf{No.} & \textbf{OS} & \textbf{CPU} & \textbf{RAM} & \textbf{Disk} & \textbf{Purpose} & \textbf{Qty.} \\
 		\hline
 		01 & Alpine Linux & 1 core & 0.5 GB & 4 GB & Router, Firewall, DHCP Server for internal VLAN routing and traffic control & 1 \\
 		\hline
@@ -62,7 +62,7 @@ A Large Language Model is integrated as an intelligent SOC assistant within the 
 		\hline
 		03 & Ubuntu Server 22.04 LTS & 10 cores & 8 GB & 60 GB & Centralized SIEM server (Wazuh) for log collection, correlation, and monitoring & 1 \\
 		\hline
-		04 & Ubuntu Server 22.04 LTS & 4 cores & 6 GB & 30 GB & User training stack including Web Target, nginx Reverse Proxy, WAF (ModSecurity), and attacker machine & 1 (per user) \\
+		04 & Ubuntu Server 22.04 LTS & 4 cores & 6 GB & 30 GB & User training stack including Web Target, nginx Reverse Proxy, WAF (ModSecurity), and attacker machine & 1 per\ user \\
 		\hline
 		05 & Ubuntu Server 22.04 LTS & 2 cores & 2 GB & 20 GB & Additional internal services for testing, log forwarding, and system integration validation & 1 \\
 		\hline
@@ -91,6 +91,8 @@ The flow-oriented approach provides the following management and engineering ben
 \item Improves documentation quality by linking diagrams directly to implementation milestones.
 \end{itemize}
 
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
 \subsection{Detailed Operational Flows}
 This subsection summarizes the primary flow diagrams that guide the implementation and integration process. The diagrams are organized by actor perspective and subsystem perspective so the team can validate both user behavior and platform internals.
 
@@ -99,7 +101,7 @@ The admin flow focuses on environment provisioning, policy control, user-stack l
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{\detokenize{images/Admin Main Flow.pdf}}
+\includegraphics[width=0.95\textwidth]{images/rendered/Admin Main Flow.png}
 \caption{Administrative workflow for managing cyber range operations}
 \label{fig:admin-main-flow}
 \end{figure}
@@ -109,7 +111,7 @@ The user flow captures learner actions from login to exercise execution, alert r
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{\detokenize{images/User Main Flow.pdf}}
+\includegraphics[width=0.95\textwidth]{images/rendered/User Main Flow.png}
 \caption{Primary user interaction flow in the cyber range platform}
 \label{fig:user-main-flow}
 \end{figure}
@@ -123,8 +125,8 @@ A replay and forwarding stage is used to preserve realistic HTTP traces for back
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{\detokenize{images/User Space.pdf}}
-\caption{User space data flow across management, security monitoring, and AI analysis components}
+\includegraphics[width=0.95\textwidth]{images/User Space.pdf}
+\caption{User space data flow across management, monitoring, and AI analysis}
 \label{fig:user-space-flow}
 \end{figure}
 
@@ -137,7 +139,7 @@ This use-case perspective complements the system-flow diagrams by clarifying fun
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.82\textwidth]{\detokenize{images/User Use Case.pdf}}
+\includegraphics[width=0.95\textwidth]{images/rendered/User Use Case.png}
 \caption{User and admin use-case interactions in the scenario management subsystem}
 \label{fig:user-use-case-flow}
 \end{figure}
@@ -147,7 +149,7 @@ The Blue Team agent flow describes how logs are ingested, normalized, correlated
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{\detokenize{images/Blueteamflow.pdf}}
+\includegraphics[width=0.95\textwidth]{images/Blueteam_Agent.pdf}
 \caption{Blue Team analysis and response pipeline flow}
 \label{fig:blueteam-flow}
 \end{figure}
@@ -157,15 +159,20 @@ The dashboard component flow explains how frontend modules consume backend endpo
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.82\textwidth]{\detokenize{images/Dashboardcomponents.pdf}}
+\includegraphics[width=0.95\textwidth]{images/Dashboard.pdf}
 \caption{Dashboard component interaction flow for monitoring and analysis}
 \label{fig:dashboard-flow}
 \end{figure}
 
 \clearpage
 \subsection{Roles and Responsibilities}
+\begingroup
+\setlength{\LTleft}{\fill}
+\setlength{\LTright}{\fill}
+\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{3cm}|>{\raggedright\arraybackslash}p{5.4cm}|}
+\small
+\begin{longtable}{|p{2.5cm}|p{3.0cm}|p{2.8cm}|p{5.2cm}|}
 	\hline
 	\textbf{Phase} & \textbf{Full Name} & \textbf{Role} & \textbf{Responsibility} \\
 	\hline
@@ -220,7 +227,7 @@ The dashboard component flow explains how frontend modules consume backend endpo
 
 \subsection{Tools and Techniques}
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{|c|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{2.2cm}|>{\raggedright\arraybackslash}p{5.0cm}|}
+\begin{longtable}{|p{0.7cm}|p{2.8cm}|p{2.8cm}|p{2.0cm}|p{4.7cm}|}
 	\hline
 	\textbf{No.} & \textbf{Tools} & \textbf{Category} & \textbf{Version} & \textbf{Description} \\
 	\hline
@@ -235,7 +242,7 @@ The dashboard component flow explains how frontend modules consume backend endpo
 	\hline
 	03 & Alpine Linux & Operating System & 3.x & Lightweight distribution used for router and firewall functions where minimal footprint and reduced attack surface are required. It improves efficiency for network control services such as DHCP, NAT, and segmentation routing. \\
 	\hline
-	04 & Docker & Containerization & 24.x & Provides consistent runtime environments for application and middleware components. Docker simplifies packaging, deployment repeatability, dependency isolation, and rapid rollback when validating attack-defense workflows. \\
+	04 & Docker & Containers & 24.x & Provides consistent runtime environments for application and middleware components. Docker simplifies packaging, deployment repeatability, dependency isolation, and rapid rollback when validating attack-defense workflows. \\
 	\hline
 	05 & Traefik & Reverse Proxy & 2.x & Deployed as an edge ingress layer in the DMZ for traffic routing and service exposure control. It helps centralize request forwarding policies, supports secure entrypoint management, and improves maintainability for multi-service architecture. \\
 	\hline
@@ -249,7 +256,7 @@ The dashboard component flow explains how frontend modules consume backend endpo
 	\hline
 	10 & LangGraph & LLM Orchestration Framework & 1.0.9 & Implements graph-based orchestration for multi-step AI reasoning. LangGraph is used to model explicit state transitions, tool invocation flow, fallback branches, and response assembly so that security explanations remain structured, traceable, and operationally controllable. \\
 	\hline
-	11 & Groq API & LLM Inference API & API-based & Provides low-latency inference for natural-language analysis of correlated events. In this project, Groq-backed models are used to generate attack interpretation, investigation hints, and mitigation-oriented explanations suitable for trainee comprehension. \\
+	11 & Gemini API & LLM Inference API & API-based & Provides the language-model inference layer for natural-language analysis of correlated events. In this project, Gemini-backed workflows are used to generate attack interpretation, investigation hints, and mitigation-oriented explanations suitable for trainee comprehension. \\
 	\hline
 	12 & FastAPI & API Backend Framework & Latest stable & Serves as the integration backbone connecting SIEM outputs, rule-based preprocessing, retrieval modules, and LangGraph workflows. FastAPI endpoints handle request validation, asynchronous processing, structured responses, and API-level error handling for dashboard consumption. \\
 	\hline
@@ -267,12 +274,63 @@ The dashboard component flow explains how frontend modules consume backend endpo
 	\hline
 	19 & HTML5 / CSS3 & Frontend Technologies & HTML5 / CSS3 & Provides semantic structure and visual styling for the web interface. These technologies are used to ensure readability, accessibility, and consistent presentation of monitoring and AI-assisted analysis outputs. \\
 	\hline
-	20 & Damn Vulnerable Web Application (DVWA) & Vulnerable Web Application & Latest & Deliberately vulnerable PHP/MySQL application used to simulate foundational web exploitation scenarios such as SQL Injection, XSS, and CSRF. DVWA supports controlled training with predictable behavior for educational repeatability. \\
-	\hline
-	21 & OWASP Juice Shop & Vulnerable Web Application & Latest & Modern intentionally vulnerable web application aligned with OWASP Top 10 categories. Juice Shop enables realistic testing of attack techniques, detection coverage, and AI-assisted explanation quality in more contemporary web stacks. \\
-	\hline
+		20 & Custom Training Web Application & Web Application Test Target & Project build & Self-developed web application used to reproduce web attack scenarios such as SQL Injection, XSS, and request manipulation inside the cyber range. This target reflects the project-specific deployment model and provides controlled validation for monitoring and AI-assisted analysis workflows. \\
+		\hline
+		21 & Custom Containerized Web Stack & Containerized Application Stack & Project build & Containerized web services developed and deployed by the project team to validate scenario orchestration, reverse-proxy inspection, attack logging, and runtime access workflows. This stack is used instead of public training applications so that experiments remain aligned with the designed scenario architecture. \\
+		\hline
 	\caption{Tools and techniques used in project.} \\
 \end{longtable}
+\endgroup
+
+\subsection{Retrieval-Augmented Generation for Security Analysis}
+Retrieval-Augmented Generation (RAG) is adopted in this project to improve the factual grounding and contextual relevance of AI-generated security explanations. Instead of sending raw alerts directly to the language model, the system first retrieves related knowledge from an indexed security knowledge base and then injects that context into the final prompt. This design is particularly suitable for cyber range training because the same alert may require different interpretations depending on HTTP payloads, WAF signatures, attack stages, and previously observed evidence.
+
+In the proposed platform, the RAG mechanism acts as an intermediate reasoning support layer between SIEM outputs and the Gemini-based analysis module. The retrieval stage reduces ambiguity by attaching semantically relevant references, such as attack descriptions, known payload patterns, rule explanations, and prior incident context, before the response generation step is executed. As a result, the AI assistant is better aligned with the monitored events and less likely to generate vague or hallucinated explanations.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/RAG_pic.png}
+	\caption{RAG workflow in the proposed platform.}
+	\label{fig:rag-workflow}
+\end{figure}
+
+The operational logic of the RAG module in this project consists of five main stages. First, structured events are collected from the monitoring pipeline, including WAF alerts, HTTP request traces, rule metadata, and analyst-selected context. Second, these inputs are normalized and converted into a compact query representation suitable for semantic search. Third, the query is embedded and compared against indexed security knowledge stored in Qdrant. Fourth, the most relevant retrieved items are combined with the current alert evidence to form an augmented prompt. Finally, Gemini generates an explanation that is grounded in both observed runtime evidence and retrieved background knowledge.
+
+From an implementation perspective, the RAG workflow complements the LangGraph orchestration layer. LangGraph controls when retrieval is required, how many supporting references should be attached, and how fallback behavior should be handled when the retrieved context is weak or incomplete. This makes the AI pipeline more traceable and more suitable for instructional use, because each answer can be explained as the result of a staged process rather than a single opaque LLM response.
+
+\subsubsection{RAG Processing Logic}
+The RAG workflow used in the capstone can be summarized as follows:
+
+\begin{enumerate}
+	\item \textbf{Event intake:} Receive selected SIEM alerts, HTTP logs, ModSecurity messages, and user-provided investigation context from the platform.
+	\item \textbf{Normalization:} Extract key fields such as request path, parameters, matched rules, suspicious payload fragments, timestamps, and severity level.
+	\item \textbf{Query formulation:} Transform the normalized evidence into a concise retrieval query that represents the current security problem.
+	\item \textbf{Vector embedding:} Encode the query using the embedding model so that semantic similarity search can be performed.
+	\item \textbf{Knowledge retrieval:} Search Qdrant for the top-k most relevant knowledge chunks, including attack descriptions, defensive guidance, and historical references.
+	\item \textbf{Context augmentation:} Merge the retrieved knowledge with the original alert evidence to construct a grounded AI prompt.
+	\item \textbf{LLM generation:} Submit the augmented prompt to Gemini to produce a human-readable explanation, likely attack interpretation, and suggested response actions.
+	\item \textbf{Result presentation:} Return the generated explanation to the dashboard for trainee review and further investigation.
+\end{enumerate}
+
+\subsubsection{Algorithmic Description}
+The following algorithm summarizes the logical sequence used by the proposed RAG-enabled security assistant.
+
+\noindent\textbf{Algorithm 1: RAG-based security event analysis}
+
+\begin{enumerate}
+	\item \textbf{Input:} Correlated security event set $E$, indexed knowledge base $K$, embedding model $M$, vector database $V$, language model $L$.
+	\item Parse $E$ to extract the main indicators of compromise, suspicious request features, matched WAF rules, and alert metadata.
+	\item Normalize the extracted evidence into a structured analysis object $A$.
+	\item Generate a retrieval query $Q$ from $A$.
+	\item Encode $Q$ using $M$ to obtain the query vector $q$.
+	\item Search $V$ over knowledge base $K$ using $q$ and retrieve the top-k relevant documents $D = \{d_1, d_2, ..., d_k\}$.
+	\item Rank or filter $D$ to remove weak or redundant context segments.
+	\item Construct an augmented prompt $P$ by combining $A$ with the retained retrieved knowledge.
+	\item Submit $P$ to language model $L$ to generate response $R$.
+	\item \textbf{Output:} Return $R$ as the final contextual explanation, investigation guidance, and mitigation-oriented suggestion.
+\end{enumerate}
+
+This algorithm is intentionally designed for cybersecurity education rather than fully autonomous incident response. The primary goal is not only to classify attacks, but also to explain why an event is suspicious, what evidence supports the interpretation, and what investigation or mitigation steps should be considered next. Therefore, the RAG layer serves both an accuracy function and a pedagogical function inside the web-based cyber range.
 
 \section{Project Management Plan}
 
@@ -309,7 +367,7 @@ Sprint 03 focuses on integrating security mechanisms and centralized log managem
 
 The responsibilities in this sprint include the following:
 \begin{itemize}
-	\item Deploying vulnerable web applications such as DVWA and OWASP Juice Shop within isolated user stacks.
+		\item Deploying self-developed web applications within isolated user stacks to generate controlled attack and monitoring data.
 	\item Configuring nginx as a reverse proxy and integrating ModSecurity as a Web Application Firewall.
 	\item Executing controlled attack and defense scenarios to generate security logs.
 	\item Deploying and configuring the Wazuh SIEM platform for centralized log collection, normalization, and correlation.
@@ -323,9 +381,9 @@ Sprint 04 is dedicated to integrating artificial intelligence into the Cyber Ran
 The responsibilities in this sprint include the following:
 \begin{itemize}
 	\item Designing AI workflows using the LangGraph framework to orchestrate Large Language Model interactions.
-	\item Defining structured inputs for AI analysis based on SIEM alerts and correlated events.
-	\item Developing prompt strategies for automated attack explanation and security analysis.
-	\item Integrating AI-generated outputs into the web-based dashboard.
+	\item Defining structured inputs for AI analysis based on SIEM alerts, HTTP requests, and correlated security events.
+	\item Implementing retrieval-augmented prompting so AI explanations remain grounded in relevant security knowledge.
+	\item Integrating AI-generated outputs into the BlueAgent WAF Console and related web-based dashboard views.
 	\item Evaluating the accuracy, relevance, and usefulness of AI-assisted explanations in training scenarios.
 	\item Refining AI interaction logic based on experimental feedback.
 \end{itemize}
@@ -345,13 +403,12 @@ The responsibilities in this sprint include the following:
 
 \subsection{Task Sheet: Assignments and Timetable}
 \begingroup
-\setlength{\LTleft}{0pt}
-\setlength{\LTright}{0pt}
+\setlength{\LTleft}{\fill}
+\setlength{\LTright}{\fill}
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.1}
 \small
-\begin{longtable}{|>{\raggedright\arraybackslash}p{3.3cm}|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{2.0cm}|>{\raggedright\arraybackslash}p{1.8cm}|>{\raggedright\arraybackslash}p{4.8cm}|}
-	\caption{Assignment Task sheet}\\
+\begin{longtable}{|p{3.0cm}|p{2.4cm}|p{1.9cm}|p{1.6cm}|p{4.4cm}|}
 	\hline
 	\textbf{Task} & \textbf{Assigned To} & \textbf{Estimated Duration} & \textbf{Deadline} & \textbf{Description} \\
 	\hline
@@ -360,6 +417,10 @@ The responsibilities in this sprint include the following:
 	\textbf{Task} & \textbf{Assigned To} & \textbf{Estimated Duration} & \textbf{Deadline} & \textbf{Description} \\
 	\hline
 	\endhead
+	\hline
+	\multicolumn{5}{r}{\textit{Continued on next page}} \\
+	\endfoot
+	\endlastfoot
 	Project planning and scope definition & Huỳnh Ngọc Quang & 1 week & Week 1 & Define project objectives, scope, deliverables, and success criteria for the CyberRange system. \\
 	\hline
 	CyberRange environment setup & Nguyễn Văn Nhân & 2 weeks & Weeks 2 & Deploy isolated CyberRange stacks including vulnerable web applications and supporting services. \\
@@ -376,7 +437,7 @@ The responsibilities in this sprint include the following:
 	\hline
 	LLM integration and workflow implementation & Hồ Tài Liên Vy Kha & 1 week & Week 3 & Integrate LLM into the analysis pipeline for handling uncertain or complex attack cases. \\
 	\hline
-	Risk management and progress tracking & Huỳnh Ngọc Quang & Continuous & Throughout project & Identify project risks, track progress, and adjust plans to ensure project stability. \\
+	Risk management and progress tracking & Huỳnh Ngọc Quang & Continuous & Project-wide & Identify project risks, track progress, and adjust plans to ensure project stability. \\
 	\hline
 	Attack simulation environment & Nguyễn Văn Nhân & 1 week & Week 4 & Set up attacker machines and tools to generate realistic attack traffic for testing. \\
 	\hline
@@ -388,17 +449,22 @@ The responsibilities in this sprint include the following:
 	\hline
 	Infrastructure optimization and stability testing & Nguyễn Văn Nhân & 1 week & Week 8 & Optimize performance, ensure isolation between users, and maintain system stability. \\
 	\hline
-	AI workflow improvement suggestions & Trương Mỹ Vy & Continuous & Throughout project & Propose improvements to reduce unnecessary LLM usage while maintaining accuracy. \\
+	AI workflow improvement suggestions & Trương Mỹ Vy & Continuous & Project-wide & Propose improvements to reduce unnecessary LLM usage while maintaining accuracy. \\
 	\hline
-	Documentation of attack scenarios & Hồ Tài Liên Vy Kha & Continuous & Throughout project & Document attack strategies, payloads, and evaluation results in the final report. \\
+	Documentation of attack scenarios & Hồ Tài Liên Vy Kha & Continuous & Project-wide & Document attack strategies, payloads, and evaluation results in the final report. \\
 	\hline
+	\caption{Assignment task sheet} \\
 \end{longtable}
 \endgroup
 
 \subsection{Meeting Minutes}
 \begin{table}[!htbp]
 	\centering
-	\begin{tabularx}{\textwidth}{|l|X|}
+	\begingroup
+	\small
+	\setlength{\tabcolsep}{4pt}
+	\renewcommand{\arraystretch}{1.1}
+	\begin{tabularx}{\textwidth}{|p{3.2cm}|X|}
 		\hline
 		\textbf{Subject} & SP26IA01 \\
 		\hline
@@ -416,4 +482,5 @@ The responsibilities in this sprint include the following:
 		\hline
 	\end{tabularx}
 	\caption{Meeting minute}
+	\endgroup
 \end{table}
